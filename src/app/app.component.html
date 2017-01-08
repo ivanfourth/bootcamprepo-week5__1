@@ -1,0 +1,60 @@
+<div>
+  <h1>{{zad1}}</h1>
+  <table  align="center" > 
+    <tr class="firstrow" [ngClass] = "{'table-active': selected == mytable}"
+    (mouseenter) = "firstrow = true"
+    (mouseleave) = "firstrow = false"
+     [ngStyle]="{
+       backgroundColor: firstrow == true? tableColors: '',
+       fontSize: firstrow == true? newFont: '',
+       fontColor: firstrow == true? newFontColor: ''
+       }">
+      <td class="nowy">{{tableRow1}}</td>
+    </tr>
+    <tr class="" [ngClass] = "{'table-active': selected == mytable}"
+    (mouseenter) = "active = true"
+    (mouseleave) = "active = false"
+     [ngStyle]="{
+       backgroundColor:active == true? tableColors: '',
+        fontSize: active == true? newFont: ''
+       }">
+    <td class="nowy">{{tableRow2}}</td>
+    </tr>
+    <tr  class="lastrow" [ngClass] = "{'table-active': selected == mytable}"
+      (mouseenter) = "lastrow = true"
+      (mouseleave) = "lastrow = false"
+     [ngStyle]="{
+       backgroundColor:lastrow == true? tableColors: '',
+        fontSize: lastrow == true? newFont: ''
+     }">
+      <td class="nowy">{{tableRow3}}</td>
+    </tr>
+  </table>
+</div>
+<div>
+<h1>{{zad2}}</h1>
+<form #formRef="ngForm" novalidate="true" name="name" class="form-control">
+  <div class="form-group">
+    <p>KLIKNIJ MNIE A POKAZE SIĘ COŚ FAJNEGO :D</p>
+    <input type="checkbox"[(ngModel)]="show" name="show">
+    <input [ngClass] = "['textfield']" *ngIf="show" [(ngModel)]="textData" name="textData" placeholder="Wpisz jakieś dane">
+  </div>
+</form>
+</div>
+<div>
+  <h1>{{zad3}}</h1>
+  <form class="task3Form" #formRef="ngForm" novalidate ng-submit="register()"> 
+    <div class="form-group">          
+      <input [ngClass] = "['task3FormTextField']" name=name type="text" #nameRef="ngModel" [(ngModel)]="task3FormTextFieldNew" required minlength="5" placeholder="Podaj Swoje Imie"><br>
+      <app-form-feedback [model]="nameRef" [form]="formRef"></app-form-feedback>
+    </div>
+    <div class="form-group"> 
+       <input [ngClass] = "['task3FormEmailField']"  type="email" name=name placeholder="Podaj swój Email" [(ngModel)]="email" required><br>
+    </div>
+    <div class="form-group"> 
+      <textarea [ngClass] = "['task3FormAreaField']" cols="30" rows="10" name=textarea required minlength="10" placeholder="Wpisz Treść" [(ngModel)]="textarea"></textarea>
+    </div>
+      <br>
+      <button type="submit">Wyślij</button>
+  </form> 
+<div> 
